@@ -1,18 +1,21 @@
 import React from "react";
 import "./MovieCard.scss";
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ key, data }) => {
+const MovieCard = ({ data }) => {
   return (
-    <div className="card-item" key={key}>
-      <div className="card-inner">
-        <div className="card-top">
-          <img src={data.Poster} alt={data.Title} />
+    <div className="card-item">
+      <Link to={`/movie/${data.imdbID}`}>
+        <div className="card-inner">
+          <div className="card-top">
+            <img src={data.Poster} alt={data.Title} />
+          </div>
+          <div className="card-bottom">
+            <h4>{data.Title}</h4>
+            <p>{data.Year}</p>
+          </div>
         </div>
-        <div className="card-bottom">
-          <h4>{data.Title}</h4>
-          <p>{data.Year}</p>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };
